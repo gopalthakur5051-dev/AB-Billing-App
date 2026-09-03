@@ -1,0 +1,10 @@
+import Database from 'better-sqlite3';
+import fs from 'node:fs';
+import path from 'node:path';
+const root=path.resolve(process.cwd());
+const dataDir=path.join(root,'data'); fs.mkdirSync(dataDir,{recursive:true});
+const db=new Database(process.env.DATABASE_PATH || path.join(dataDir,'ab-billing.db'));
+db.pragma('foreign_keys = ON');
+const migration=fs.readFileSync(path.resolve(root,'../database/migrations/001_initial.sql'),'utf8'); db.exec(migration);
+const seed=fs.readFileSync(path.resolve(root,'../database/seed/seed.sql'),'utf8'); db.exec(seed);
+export default db;
