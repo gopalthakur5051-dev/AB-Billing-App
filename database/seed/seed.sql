@@ -1,0 +1,1 @@
+INSERT OR IGNORE INTO business_settings (id,business_name,address,phone,email,gst_number,invoice_prefix,currency,default_tax,invoice_footer) VALUES (1,'AB BILLING','Jaipur, Rajasthan','+91 00000 00000','billing@example.com','','AB-','INR',18,'Thank you for your business.');
